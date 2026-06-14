@@ -1,7 +1,13 @@
 /* ====================================================================
-   ATIVIDADE: Projeto 02 - Implementação de MIPS Monociclo em Verilog
+   DISCIPLINA: Arquitetura e Organização de Computadores
+   PROJETO: Implementação de Processador MIPS Monociclo em Verilog
    COMPONENTE: Unidade de Controle Central (CONTROL)
-   ARQUIVO: control.v
+   FUNÇÃO: Decodifica o código da instrução (Opcode) para ativar ou 
+   desativar os sinais e multiplexadores que definem o caminho dos dados.
+   
+   EQUIPE:
+   - KAUA GABRIEL DOS SANTOS CELESTINO
+   - SOFIA DUARTE DE MENDONCA 
    ==================================================================== */
 
 module control (

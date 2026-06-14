@@ -1,6 +1,13 @@
 /* ====================================================================
-   ATIVIDADE: Projeto 02 - Implementação de MIPS Monociclo em Verilog
-   COMPONENTE: Memória de Dados (D_MEM)
+   DISCIPLINA: Arquitetura e Organização de Computadores
+   PROJETO: Implementação de Processador MIPS Monociclo em Verilog
+   COMPONENTE: MMemória de Dados (D_MEM)
+   FUNÇÃO: Atua como a memória RAM assíncrona para ler ou gravar dados 
+   na arquitetura, isolando a saída em alta impedância quando não está a ser lida.
+   
+   EQUIPE:
+   - KAUA GABRIEL DOS SANTOS CELESTINO
+   - SOFIA DUARTE DE MENDONCA 
    ==================================================================== */
 
 module d_mem #(

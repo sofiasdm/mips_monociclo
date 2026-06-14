@@ -1,7 +1,13 @@
 /* ====================================================================
-   ATIVIDADE: Projeto 02 - Implementação de MIPS Monociclo em Verilog
-   COMPONENTE: Unidade de Controle da ULA (ULA_CTRL)
-   ARQUIVO: ula_ctrl.v
+   DISCIPLINA: Arquitetura e Organização de Computadores
+   PROJETO: Implementação de Processador MIPS Monociclo em Verilog
+   COMPONENTE: ula_ctrl
+   FUNÇÃO: Combina o sinal de controle geral com o campo funct da 
+   instrução para deduzir a operação matemática exata que a ULA deve fazer.
+
+   EQUIPE:
+   - KAUA GABRIEL DOS SANTOS CELESTINO
+   - SOFIA DUARTE DE MENDONCA 
    ==================================================================== */
 
 module ula_ctrl (

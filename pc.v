@@ -1,8 +1,13 @@
 /* ====================================================================
-   ATIVIDADE: Projeto 02 - Implementação de MIPS Monociclo em Verilog
+   DISCIPLINA: Arquitetura e Organização de Computadores
+   PROJETO: Implementação de Processador MIPS Monociclo em Verilog
    COMPONENTE: Contador de Programa (PC)
-	FUNCAO: Armazena e atualiza, a cada pulso de clock, o endereço da 
+   FUNÇÃO: Armazena e atualiza, a cada pulso de clock, o endereço da 
 	instrução que está prestes a ser executada.
+
+   EQUIPE:
+   - KAUA GABRIEL DOS SANTOS CELESTINO
+   - SOFIA DUARTE DE MENDONCA 
    ==================================================================== */
 
 module pc (

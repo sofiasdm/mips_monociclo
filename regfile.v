@@ -1,7 +1,13 @@
 /* ====================================================================
-   ATIVIDADE: Projeto 02 - Implementação de MIPS Monociclo em Verilog
+   DISCIPLINA: Arquitetura e Organização de Computadores
+   PROJETO: Implementação de Processador MIPS Monociclo em Verilog
    COMPONENTE: Banco de Registradores (REGFILE)
-	FUNCAO: 
+   FUNÇÃO: Gerencia os 32 registradores internos do MIPS, permitindo 
+   ler dois valores de forma assíncrona e gravar um resultado sronicamente.
+
+   EQUIPE:
+   - KAUA GABRIEL DOS SANTOS CELESTINO
+   - SOFIA DUARTE DE MENDONCA 
    ==================================================================== */
 
 module regfile (

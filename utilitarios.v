@@ -1,4 +1,26 @@
 /* ====================================================================
+   DISCIPLINA: Arquitetura e Organização de Computadores
+   PROJETO: Implementação de Processador MIPS Monociclo em Verilog
+   COMPONENTE: MUX's, sign_extend, shift_left
+   FUNÇÃO: 
+   mux2x1_32: Seleciona um entre dois caminhos de dados de 32 bits com 
+   base num sinal de controle de 1 bit.
+   mux2x1_5: Escolhe qual o registrador de destino de 5 bits (rt ou rd) 
+   receberá a escrita no banco de registradores.
+   mux4x1_32: Alterna entre quatro barramentos de 32 bits, permitindo 
+   injetar os dados corretos no banco para instruções como lw, jal e lui.
+   sign_extend: Converte os valores imediatos de 16 bits para 32 bits, 
+   estendendo o sinal para cálculos aritméticos ou preenchendo com zeros 
+   para lógicas.
+   shift_left_2: Multiplica o imediato estendido por quatro através de 
+   um deslocamento de bits para alinhar os endereços de desvios (branches).
+
+   EQUIPE:
+   - KAUA GABRIEL DOS SANTOS CELESTINO
+   - SOFIA DUARTE DE MENDONCA 
+   ==================================================================== */
+
+/* ====================================================================
    COMPONENTE: Multiplexador 2x1 de 32 bits
    ==================================================================== */
 

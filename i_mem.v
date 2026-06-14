@@ -1,7 +1,13 @@
 /* ====================================================================
-   ATIVIDADE: Projeto 02 - Implementação de MIPS Monociclo em Verilog
-   COMPONENTE: Memória de Instrução (I_MEM)
-	FUNCAO: 
+   DISCIPLINA: Arquitetura e Organização de Computadores
+   PROJETO: Implementação de Processador MIPS Monociclo em Verilog
+   COMPONENTE: Memória de Instrução (i_mem)
+   FUNÇÃO:Funciona como uma memória ROM assíncrona que lê o arquivo 
+   externo e fornece a instrução binária correspondente ao endereço do PC.
+   
+   EQUIPE:
+   - KAUA GABRIEL DOS SANTOS CELESTINO
+   - SOFIA DUARTE DE MENDONCA 
    ==================================================================== */
 
 module i_mem #(

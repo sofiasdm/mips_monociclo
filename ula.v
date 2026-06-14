@@ -1,7 +1,14 @@
 /* ====================================================================
-   ATIVIDADE: Projeto 02 - Implementação de MIPS Monociclo em Verilog
+   DISCIPLINA: Arquitetura e Organização de Computadores
+   PROJETO: Implementação de Processador MIPS Monociclo em Verilog
    COMPONENTE: Unidade Lógica e Aritmética (ULA)
-   ARQUIVO: ula.v
+   FUNÇÃO: Executa as operações aritméticas, lógicas, de deslocamento 
+   ou de comparação com base nos dados recebidos e na operação ordenada 
+   pelo controle.
+
+   EQUIPE:
+   - KAUA GABRIEL DOS SANTOS CELESTINO
+   - SOFIA DUARTE DE MENDONCA 
    ==================================================================== */
 
 module ula (

@@ -1,6 +1,13 @@
 /* ====================================================================
+   DISCIPLINA: Arquitetura e Organização de Computadores
+   PROJETO: Implementação de Processador MIPS Monociclo em Verilog
    COMPONENTE: Banco de Testes (Testbench)
-   ARQUIVO: mips_tb.v
+   FUNÇÃO: Fornece o sinal de estímulo externo (geração de clock e reset) 
+   para poder testar e visualizar as ondas do processador no simulador.
+
+   EQUIPE:
+   - KAUA GABRIEL DOS SANTOS CELESTINO
+   - SOFIA DUARTE DE MENDONCA 
    ==================================================================== */
 
 `timescale 1ns / 1ps

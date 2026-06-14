@@ -1,8 +1,15 @@
-/* ====================================================================   
-   ATIVIDADE: Projeto 02 - Implementação de MIPS Monociclo em Verilog
+/* ====================================================================
+   DISCIPLINA: Arquitetura e Organização de Computadores
+   PROJETO: Implementação de Processador MIPS Monociclo em Verilog
    COMPONENTE: Núcleo MIPS Monociclo (Top-Level)
-   ARQUIVO: mips_monociclo.v
+   FUNÇÃO: Atua como o módulo principal (Top-Level) que interliga todos 
+   os componentes do processador através de barramentos de fios (wires).
+   
+   EQUIPE:
+   - KAUA GABRIEL DOS SANTOS CELESTINO
+   - SOFIA DUARTE DE MENDONCA 
    ==================================================================== */
+
 
 module mips_monociclo (
     input wire clock,        // Sinal de clock global do sistema

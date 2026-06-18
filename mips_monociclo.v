@@ -29,6 +29,7 @@ module mips_monociclo (
     wire [31:0] pc_atual;
     wire [31:0] pc_proximo;
     wire [31:0] pc_mais_4;
+	wire [31:0] pc_mais_8;
     wire [31:0] instrucao;
 
     // Sinais da Unidade de Controle
@@ -170,6 +171,7 @@ module mips_monociclo (
 
     // Cálculo dos somadores padrão do MIPS
     assign pc_mais_4  = pc_atual + 4;
+	assign pc_mais_8  = pc_atual + 8;
     assign pc_branch  = pc_mais_4 + imm_ext_shift;
     assign w_and_beq    = branch_eq & zero_flag;      // Porta AND do BEQ
     assign w_not_zero   = ~zero_flag;                 // Porta NOT da flag zero

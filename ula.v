@@ -7,8 +7,10 @@
    pelo controle.
 
    EQUIPE:
-   - KAUA GABRIEL DOS SANTOS CELESTINO
-   - SOFIA DUARTE DE MENDONCA 
+   BERTHO HENRIQUE CORDEIRO DE OLIVEIRA
+   KAUÃ GABRIEL DOS SANTOS CELESTINO
+   SOFIA DUARTE DE MENDONÇA
+   WALLYSON LENILSON LIRA DA SILVA
    ==================================================================== */
 
 module ula (
@@ -16,7 +18,7 @@ module ula (
     input wire [31:0] In2,       // Operando 2 (vindo de R[$rt] ou do imediato extenso)
     input wire [3:0]  OP,        // Código da operação fornecido por ula_ctrl
     output reg [31:0] result,    // Resultado de 32 bits da operação
-    output wire Zero_flag  // Ativado (1) se result == 0, usado em branches
+    output wire Zero_flag        // Ativado (1) se result == 0, usado em branches
 );
 
     // Definição interna dos códigos de operação (Mapeamento do projetista)

@@ -6,24 +6,26 @@
    desativar os sinais e multiplexadores que definem o caminho dos dados.
    
    EQUIPE:
-   - KAUA GABRIEL DOS SANTOS CELESTINO
-   - SOFIA DUARTE DE MENDONCA 
+   BERTHO HENRIQUE CORDEIRO DE OLIVEIRA
+   KAUÃ GABRIEL DOS SANTOS CELESTINO
+   SOFIA DUARTE DE MENDONÇA
+   WALLYSON LENILSON LIRA DA SILVA
    ==================================================================== */
 
 module control (
     input wire [5:0] Opcode,      // 6 bits mais significativos da instrução (bits [31:26])
     input wire [5:0] Func,        // 6 bits menos significativos (campo funct, usado para identificar jr)
     output reg [1:0] RegDst,      // Seleciona o registrador de destino (00=$rt, 01=$rd, 10=$ra para jal)
-    output reg ALUSrc,      // Seleciona o segundo operando da ULA (0=RegData2, 1=Imediato)
+    output reg ALUSrc,            // Seleciona o segundo operando da ULA (0=RegData2, 1=Imediato)
     output reg [1:0] MemtoReg,    // Seleciona o dado que vai p/ o RegFile (00=ULA, 01=RAM, 10=PC+8 para jal)
-    output reg RegWrite,    // Habilita a escrita no Banco de Registradores
-    output reg MemRead,     // Habilita a leitura na Memória de Dados
-    output reg MemWrite,    // Habilita a escrita na Memória de Dados
-    output reg BranchEq,    // Ativado para a instrução BEQ
-    output reg BranchNotEq, // Ativado para a instrução BNE
+    output reg RegWrite,          // Habilita a escrita no Banco de Registradores
+    output reg MemRead,           // Habilita a leitura na Memória de Dados
+    output reg MemWrite,          // Habilita a escrita na Memória de Dados
+    output reg BranchEq,          // Ativado para a instrução BEQ
+    output reg BranchNotEq,       // Ativado para a instrução BNE
     output reg [2:0] ALUOp,       // Código de operação enviado para o bloco ula_ctrl
-    output reg Jump,        // Ativado para salto incondicional (j, jal)
-    output reg JumpReg      // Ativado para salto via registrador (jr)
+    output reg Jump,              // Ativado para salto incondicional (j, jal)
+    output reg JumpReg            // Ativado para salto via registrador (jr)
 );
 
     // Bloco combinacional para decodificação do Opcode

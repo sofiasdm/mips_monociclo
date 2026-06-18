@@ -16,8 +16,10 @@
    um deslocamento de bits para alinhar os endereços de desvios (branches).
 
    EQUIPE:
-   - KAUA GABRIEL DOS SANTOS CELESTINO
-   - SOFIA DUARTE DE MENDONCA 
+   BERTHO HENRIQUE CORDEIRO DE OLIVEIRA
+   KAUÃ GABRIEL DOS SANTOS CELESTINO
+   SOFIA DUARTE DE MENDONÇA
+   WALLYSON LENILSON LIRA DA SILVA
    ==================================================================== */
 
 /* ====================================================================

@@ -6,14 +6,16 @@
    os componentes do processador através de barramentos de fios (wires).
    
    EQUIPE:
-   - KAUA GABRIEL DOS SANTOS CELESTINO
-   - SOFIA DUARTE DE MENDONCA 
+   BERTHO HENRIQUE CORDEIRO DE OLIVEIRA
+   KAUÃ GABRIEL DOS SANTOS CELESTINO
+   SOFIA DUARTE DE MENDONÇA
+   WALLYSON LENILSON LIRA DA SILVA
    ==================================================================== */
 
 
 module mips_monociclo (
-    input wire clock,        // Sinal de clock global do sistema
-    input wire reset,        // Sinal de reset global do sistema
+    input wire clock,                // Sinal de clock global do sistema
+    input wire reset,                // Sinal de reset global do sistema
     output wire [31:0] out_pc,       // Saída monitorizada: Valor atual do PC
     output wire [31:0] out_ula,      // Saída monitorizada: Resultado atual da ULA
     output wire [31:0] out_dmem      // Saída monitorizada: Dado atual da saída da RAM
@@ -43,10 +45,10 @@ module mips_monociclo (
     wire jump_reg;
 
     // Sinais do Banco de Registradores
-    reg  [4:0]  w_reg_addr; // Usado no bloco combinacional interno do jal
+    wire  [4:0]  w_reg_addr; // Usado no bloco combinacional interno do jal
     wire [31:0] r_data1;
     wire [31:0] r_data2;
-    reg  [31:0] w_reg_data; // Usado no bloco combinacional de retorno
+    wire  [31:0] w_reg_data; // Usado no bloco combinacional de retorno
 
     // Sinais de Extensão e Deslocamento
     wire [31:0] imm_ext;
@@ -136,8 +138,10 @@ module mips_monociclo (
     );
 
     // Instância da Unidade Lógica e Aritmética (ULA)
-    ula ula_inst (
-        .In1(r_data1),
+    wire eh_shift_constante = (instrucao[31:26] == 6'b000000) && (instrucao[25:21] == 5'b00000) &&
+                              (instrucao[5:0] == 6'b000000 || instrucao[5:0] == 6'b000010 || instrucao[5:0] == 6'b000011);
+	 ula ula_inst (
+        .In1(eh_shift_constante ? {27'b0, instrucao[10:6]} : r_data1),
         .In2(alu_in2),
         .OP(ula_control_op),
         .result(alu_resultado),
@@ -146,6 +150,7 @@ module mips_monociclo (
 
     // Instância da Memória de Dados (RAM)
     d_mem d_mem_inst (
+	     .clock(clock),
         .Address(alu_resultado),
         .WriteData(r_data2),
         .MemWrite(mem_write),
@@ -170,26 +175,18 @@ module mips_monociclo (
     assign w_not_zero   = ~zero_flag;                 // Porta NOT da flag zero
     assign w_and_bne    = branch_n_eq & w_not_zero;   // Porta AND do BNE
 
-    // MUX: Seleção do Registrador de Destino (RegDst)
-    always @(*) begin
-        case (reg_dst)
-            2'b00:   w_reg_addr = instrucao[20:16]; // rt (Tipo I)
-            2'b01:   w_reg_addr = instrucao[15:11]; // rd (Tipo R)
-            2'b10:   w_reg_addr = 5'd31;            // $ra (para a instrução jal)
-            default: w_reg_addr = instrucao[15:11];
-        endcase
-    end
+    // MUX: Seleção do Registrador de Destino (RegDst) via atribuição contínua
+	 assign w_reg_addr = (reg_dst == 2'b00) ? instrucao[20:16] :
+                    (reg_dst == 2'b01) ? instrucao[15:11] :
+                    (reg_dst == 2'b10) ? 5'd31 :
+                    instrucao[15:11];
 
-    // MUX: Seleção do Dado de Escrita no Banco (MemtoReg)
-    always @(*) begin
-        case (mem_to_reg)
-            2'b00:   w_reg_data = alu_resultado;                     // Resultado da ULA
-            2'b01:   w_reg_data = ram_read_data;                    // Dado vindo da RAM (lw)
-            2'b10:   w_reg_data = pc_mais_4;                        // Salva PC+4 em $ra (jal)
-            2'b11:   w_reg_data = {instrucao[15:0], 16'h0000};      // Carrega constante alta (lui)
-            default: w_reg_data = alu_resultado;
-        endcase
-    end
+    // MUX: Seleção do Dado de Escrita no Banco (MemtoReg) via atribuição contínua
+	 assign w_reg_data = (mem_to_reg == 2'b00) ? alu_resultado :
+                    (mem_to_reg == 2'b01) ? ram_read_data :
+                    (mem_to_reg == 2'b10) ? pc_mais_4 :
+                    (mem_to_reg == 2'b11) ? {instrucao[15:0], 16'h0000} :
+                    alu_resultado;
 
     // MUX: Seleção do segundo operando da ULA (ALUSrc)
     assign alu_in2 = (alu_src == 1'b1) ? imm_ext : r_data2;

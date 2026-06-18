@@ -27,12 +27,10 @@ module d_mem #(
     reg [31:0] ram [0:RAM_SIZE-1];
 	integer i;
 
-    // Escrita Assíncrona / Combinacional na RAM
-    // Em um sistema puramente monociclo assíncrono para RAM, a escrita ocorre direto pelo nível lógico
-    always @(*) begin
-        if (MemWrite) begin
+    // Escrita Síncrona
+    always @(posedge clock) begin
+        if (MemWrite)
             ram[Address[31:2]] <= WriteData;
-        end
     end
 	 
 	 // Leitura Assíncrona da RAM controlada pelo sinal de leitura (MemRead)

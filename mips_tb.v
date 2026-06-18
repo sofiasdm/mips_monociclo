@@ -50,7 +50,7 @@ module mips_tb;
         reset = 0;
         
         // Deixa o simulador rodar por tempo suficiente para executar o instruction.list
-        #200;
+        #1500;
         
         // Encerra a simulação
         $display("Simulação concluída. Verifique as formas de onda.");

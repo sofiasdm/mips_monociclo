@@ -6,12 +6,14 @@
    externo e fornece a instrução binária correspondente ao endereço do PC.
    
    EQUIPE:
-   - KAUA GABRIEL DOS SANTOS CELESTINO
-   - SOFIA DUARTE DE MENDONCA 
+   BERTHO HENRIQUE CORDEIRO DE OLIVEIRA
+   KAUÃ GABRIEL DOS SANTOS CELESTINO
+   SOFIA DUARTE DE MENDONÇA
+   WALLYSON LENILSON LIRA DA SILVA
    ==================================================================== */
 
 module i_mem #(
-    parameter MEM_SIZE = 256 // Tamanho parametrizável da memória (quantidade de instruções)
+    parameter MEM_SIZE = 256   // Tamanho parametrizável da memória (quantidade de instruções)
 )
 (
     input wire [31:0] address, // Endereço de leitura fornecido pelo PC (32 bits)

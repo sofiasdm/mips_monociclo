@@ -54,7 +54,7 @@ module mips_tb;
         
         // Encerra a simulação
         $display("Simulação concluída. Verifique as formas de onda.");
-        $finish;
+        $stop;
     end
 
 endmodule

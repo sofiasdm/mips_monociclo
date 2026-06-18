@@ -6,17 +6,20 @@
    na arquitetura, isolando a saída em alta impedância quando não está a ser lida.
    
    EQUIPE:
-   - KAUA GABRIEL DOS SANTOS CELESTINO
-   - SOFIA DUARTE DE MENDONCA 
+   BERTHO HENRIQUE CORDEIRO DE OLIVEIRA
+   KAUÃ GABRIEL DOS SANTOS CELESTINO
+   SOFIA DUARTE DE MENDONÇA
+   WALLYSON LENILSON LIRA DA SILVA
    ==================================================================== */
 
 module d_mem #(
     parameter RAM_SIZE = 256 // Tamanho parametrizável da memória de dados
 )(
+	 input wire clock,            // Entrada de Clock global
     input wire [31:0] Address,   // Endereço de acesso computado pela ULA (32 bits)
     input wire [31:0] WriteData, // Dado fornecido pelo regfile para ser escrito (32 bits)
-    input wire MemWrite,  // Sinal de controle que habilita a escrita na RAM (1 bit)
-    input wire MemRead,   // Sinal de controle que habilita a leitura na RAM (1 bit)
+    input wire MemWrite,         // Sinal de controle que habilita a escrita na RAM (1 bit)
+    input wire MemRead,          // Sinal de controle que habilita a leitura na RAM (1 bit)
     output wire [31:0] ReadData  // Dado lido da memória na posição especificada (32 bits)
 );
 
@@ -27,12 +30,20 @@ module d_mem #(
     // Em um sistema puramente monociclo assíncrono para RAM, a escrita ocorre direto pelo nível lógico
     always @(*) begin
         if (MemWrite) begin
-            ram[Address[31:2]] = WriteData;
+            ram[Address[31:2]] <= WriteData;
         end
     end
-
-    // Leitura Assíncrona com lógica de Alta Impedância (Tri-state)
-    // Se MemRead for TRUE (1), disponibiliza o dado lido. Se for FALSE (0), fica em alta impedância (Z)
-    assign ReadData = (MemRead) ? ram[Address[31:2]] : 32'bz;
+	 
+	 // Leitura Assíncrona da RAM controlada pelo sinal de leitura (MemRead)
+    // Se MemRead for 1, lê o dado da posição; caso contrário, zera a saída
+    assign ReadData = (MemRead == 1'b1) ? ram[Address[31:2]] : 32'h00000000;
+	 
+	 // Inicialização da RAM com zeros para evitar valores 'x' (indefinidos) na simulação
+	 integer i;                                     // Variável de controle do laço
+    initial begin                                  // Bloco executado no início da simulação
+        for (i = 0; i < RAM_SIZE; i = i + 1) begin // Percorre todas as posições da RAM
+            ram[i] = 32'h00000000;                 // Zera a posição para evitar valor lixo ('x')
+        end
+    end
 
 endmodule

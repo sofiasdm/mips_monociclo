@@ -150,7 +150,7 @@ module mips_monociclo (
 
     // Instância da Memória de Dados (RAM)
     d_mem d_mem_inst (
-	     .clock(clock),
+	    .clock(clock),
         .Address(alu_resultado),
         .WriteData(r_data2),
         .MemWrite(mem_write),

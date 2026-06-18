@@ -6,13 +6,15 @@
 	instrução que está prestes a ser executada.
 
    EQUIPE:
-   - KAUA GABRIEL DOS SANTOS CELESTINO
-   - SOFIA DUARTE DE MENDONCA 
+   BERTHO HENRIQUE CORDEIRO DE OLIVEIRA
+   KAUÃ GABRIEL DOS SANTOS CELESTINO
+   SOFIA DUARTE DE MENDONÇA
+   WALLYSON LENILSON LIRA DA SILVA
    ==================================================================== */
 
 module pc (
-    input wire clock,    // Sinal de clock para atualização síncrona (1 bit) 
-    input wire reset,    // Sinal de reset para inicializar o PC em 0x00000000 (1 bit) 
+    input wire clock,           // Sinal de clock para atualização síncrona (1 bit) 
+    input wire reset,           // Sinal de reset para inicializar o PC em 0x00000000 (1 bit) 
     input wire [31:0] nextPC,   // Próximo valor do PC computado pelo hardware (32 bits) 
     output reg [31:0] PC        // Valor atual armazenado no PC, enviado à memória de instrução (32 bits) [cite: 65, 91]
 );

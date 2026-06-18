@@ -6,8 +6,10 @@
    instrução para deduzir a operação matemática exata que a ULA deve fazer.
 
    EQUIPE:
-   - KAUA GABRIEL DOS SANTOS CELESTINO
-   - SOFIA DUARTE DE MENDONCA 
+   BERTHO HENRIQUE CORDEIRO DE OLIVEIRA
+   KAUÃ GABRIEL DOS SANTOS CELESTINO
+   SOFIA DUARTE DE MENDONÇA
+   WALLYSON LENILSON LIRA DA SILVA
    ==================================================================== */
 
 module ula_ctrl (
